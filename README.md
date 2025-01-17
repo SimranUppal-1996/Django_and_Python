@@ -1,4 +1,4 @@
-# Python project to check plagiarism with the following four options:
+# Project-Plagiarism-Detection
 1 - Upload text files
 
 
