@@ -1,18 +1,17 @@
 # Project-Plagiarism-Detection
-1 - Upload text files
 
+Aim:
 
+To detect plagiarism with the following two options:
 
-2 - Choose text files from the local computer
+1. Uploaded pdf files
+2. Input set of texts (two)
 
+Skills used:
 
+1. Python
+2. Natural Language Processing
 
-3 - Choose text files from a particular drive
+Description:
 
-
-
-4 - Choose text files from a particular path
-
-
-
-And finally checks plagiarism among the text files!
+The user uploads multiple pdf files or enters two pieces of texts (in English), and the model detects plagiarism and returns 'Manhattan Distance' and 'Heatmap' highlighting whether there is plagiarism presence or not.
