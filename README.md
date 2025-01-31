@@ -1,5 +1,23 @@
 # Project-Plagiarism-Detection
 
+VERSION 1
+Aim:
+
+To detect plagiarism among uploaded files with the following four options for upload:
+
+1. Upload text files
+
+2. Among all the text files in the local computer
+
+3. Among the text files in a particular drive
+
+4. Among the text files in a particular folder in a specific drive
+
+Skills Used:
+
+Python
+
+VERSION 2
 Aim:
 
 To detect plagiarism with the following two options:
