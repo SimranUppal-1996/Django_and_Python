@@ -33,3 +33,6 @@ Skills used:
 Description:
 
 The user uploads multiple pdf files or enters two pieces of texts (in English), and the model detects plagiarism and returns 'Manhattan Distance' and 'Heatmap' highlighting whether there is plagiarism presence or not.
+
+![image](https://github.com/user-attachments/assets/d1d62596-f29d-4483-a9b8-f5b40b14dd66)
+
