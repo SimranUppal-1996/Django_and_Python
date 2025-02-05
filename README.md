@@ -34,7 +34,7 @@ Description:
 
 The user uploads multiple pdf files or enters two pieces of texts (in English), and the model detects plagiarism and returns 'Manhattan Distance' and 'Heatmap' highlighting whether there is plagiarism presence or not.
 
-PROJECT IMAGES:
+PROJECT IMAGES(V2):
 
 ![p4-1](https://github.com/user-attachments/assets/ae7c080e-c31c-4c9a-aeaf-5ad17f4d9e10)
 ![p4-2](https://github.com/user-attachments/assets/5e815f53-2543-44ae-9092-a9ecd958cab6)
