@@ -26,7 +26,7 @@ def RemEscSeq(L_F):
         filter = ''.join([chr(i) for i in range(1, 32)])
         x = x.translate(str.maketrans('', '', filter))
         new_list.append(x)
-        return(new_list)
+    return(new_list)
 
 #this function finds out similarity among files, two at a time
 def sim(FC,NL,FN):
