@@ -1,0 +1,240 @@
+VERSION 1
+---------------------------------------------------------------------------------
+🔢 LIST OF ALL NON PRINTABLE ASCII CHARACTERS (1–31 & 127)
+---------------------------------------------------------------------------------
+ASCII Code	Character	Description
+1	SOH	Start of Header
+2	STX	Start of Text
+3	ETX	End of Text
+4	EOT	End of Transmission
+5	ENQ	Enquiry
+6	ACK	Acknowledge
+7	BEL	Bell (Beep Sound) 🔔
+8	BS	Backspace ⌫
+9	TAB	Horizontal Tab ↹
+10	LF	Line Feed (New Line \n)
+11	VT	Vertical Tab
+12	FF	Form Feed (New Page)
+13	CR	Carriage Return \r
+14	SO	Shift Out
+15	SI	Shift In
+16	DLE	Data Link Escape
+17	DC1	Device Control 1
+18	DC2	Device Control 2
+19	DC3	Device Control 3
+20	DC4	Device Control 4
+21	NAK	Negative Acknowledge
+22	SYN	Synchronous Idle
+23	ETB	End of Transmission Block
+24	CAN	Cancel
+25	EM	End of Medium
+26	SUB	Substitute
+27	ESC	Escape \x1B
+28	FS	File Separator
+29	GS	Group Separator
+30	RS	Record Separator
+31	US	Unit Separator
+127	DEL	Delete
+
+⚙️ Why Are They Non-Printable?
+These characters were designed for control rather than display.
+They were used in old teletypes, printers, and network protocols to control devices.
+For example, BEL (chr(7)) makes a beep sound, and ESC (chr(27)) is used in terminal commands.
+
+---------------------------------------------------------------------------------
+📌 SequenceMatcher
+---------------------------------------------------------------------------------
+The SequenceMatcher class (from the difflib module) is used to compare two sequences (like strings, lists, or tuples) and find similarities, 
+differences, and matching blocks.
+
+🔍 How It Works
+
+from difflib import SequenceMatcher
+
+It finds the longest matching subsequence between two sequences.
+It calculates a similarity ratio (between 0 and 1).
+It can identify differences for text comparison.
+
+🛠 Common Use Cases
+1️⃣ Find Similarity Between Strings
+
+from difflib import SequenceMatcher
+
+s1 = "hello world"
+s2 = "hello there"
+
+similarity = SequenceMatcher(None, s1, s2).ratio()
+print(similarity)
+
+🔹 Output:
+0.7692307692307693  # (76.9% similarity)
+
+💡 Formula Used:
+2M/T
+Where:
+M = Number of matching characters
+T = Total characters in both strings
+
+2️⃣ Find Matching Blocks
+
+matcher = SequenceMatcher(None, "abcdef", "acdfg")
+for match in matcher.get_matching_blocks():
+    print(match)
+    
+🔹 Output:
+Match(a=0, b=0, size=1)  # 'a'
+Match(a=2, b=1, size=2)  # 'cd'
+Match(a=5, b=4, size=0)  # End marker
+
+💡 What This Means:
+
+"a" at index 0 in both sequences.
+"cd" appears at index 2 in "abcdef" and index 1 in "acdfg".
+Last match (size=0) is an end marker.
+
+📌 Why None as the First Argument in SequenceMatcher(None, s1, s2)?
+The first argument in SequenceMatcher is isjunk, which is used to define a function that filters out "junk" characters (irrelevant elements, 
+like spaces or punctuation).
+
+3️⃣ Find Differences Between Strings
+
+s1 = "apple"
+s2 = "appla"
+
+matcher = SequenceMatcher(None, s1, s2)
+for opcode in matcher.get_opcodes():
+    print(opcode)
+    
+🔹 Output:
+('equal', 0, 4, 0, 4)   # First 4 characters are the same ("appl")
+('replace', 4, 5, 4, 5) # Last letter 'e' -> 'a'
+
+💡 What This Means:
+equal → "appl" is identical in both.
+replace → "e" is replaced by "a".
+
+🎯 Summary
+✅ SequenceMatcher helps compare sequences for similarity, matching parts, and differences.
+✅ Used in spell-checking, plagiarism detection, and version control (like Git diffs).
+✅ .ratio() → Similarity score.
+✅ .get_matching_blocks() → Identifies common parts.
+✅ .get_opcodes() → Shows differences.
+
+📌 Difference Between cmd /C and cmd /K
+Both cmd /C and cmd /K are used to execute commands in Windows Command Prompt, but they behave differently:
+
+Command	What It Does
+cmd /C	Runs a command and closes the CMD window immediately after execution.
+cmd /K	Runs a command and keeps the CMD window open after execution.
+
+VERSION 2
+----------------------------------------------------------------------------------
+LIBRARIES USED
+----------------------------------------------------------------------------------
+📂 1. File Handling & System Utilities
+
+os → Interact with the file system (create directories, check file existence, path operations).
+re →	Regular expressions for text processing (cleaning text, removing special characters, etc.).
+glob →	Find files matching a pattern (used to get .pdf files from a folder).
+base64 →	Encode/Decode binary data (like images) into Base64 format (used for embedding images in HTML).
+BytesIO (from io) →	Handles binary data streams in memory (used for image processing before encoding).
+
+📊 2. Data Processing & Machine Learning
+
+numpy →	Used for numerical computations, array operations, and distance calculations.
+pandas →	Used for handling dataframes (storing distances between texts for plagiarism detection).
+torch →	PyTorch framework for deep learning (used to load BERT for text embeddings).
+transformers →	Hugging Face BERT Tokenizer & Model for text processing.
+
+📄 3. Natural Language Processing (NLP)
+
+nltk →	Natural Language Toolkit (NLP) library.
+nltk.tokenize.word_tokenize →	Splits text into words (used for text pre-processing).
+nltk.corpus.stopwords →	Removes common words like "the", "is", etc.
+nltk.stem.PorterStemmer →	Converts words to their root forms (e.g., "running" → "run").
+nltk.stem.WordNetLemmatizer →	Similar to stemming but more accurate (e.g., "better" → "good").
+
+🔹 NLTK Downloads:
+nltk.download('punkt')      # Tokenization
+nltk.download('stopwords')  # Stopword removal
+nltk.download('wordnet')    # Lemmatization
+nltk.download('omw-1.4')    # WordNet dependencies
+
+📜 4. PDF Processing
+
+pdfplumber →	Extract text from PDF files (used to read documents for plagiarism detection).
+
+🎨 5. Data Visualization
+
+matplotlib.pyplot →	Used to plot heatmaps of distances between text embeddings.
+seaborn →	Creates better-looking heatmaps for plagiarism analysis.
+
+🌐 6. Django Web Framework (Back-End)
+
+django.conf.settings →	Access Django settings (e.g., file upload paths).
+django.core.files.storage.FileSystemStorage →	Handles file uploads.
+django.http.JsonResponse →	Sends JSON responses to the frontend.
+django.shortcuts.render →	Renders HTML templates with dynamic data.
+
+🚀 Summary
+File Handling → os, re, glob, base64, BytesIO
+Data Science & ML → numpy, pandas, torch, transformers
+NLP → nltk, pdfplumber
+Visualization → matplotlib, seaborn
+Django (Web Framework) → django.conf, django.core.files.storage, django.http, django.shortcuts
+
+-------------------------------------------------------------------------------------
+inputs = tokenizer(text, return_tensors='pt', truncation=True, padding=True)
+-------------------------------------------------------------------------------------
+tokenizer(text, ...) → Converts raw text into tokenized input.
+return_tensors='pt' → Returns a PyTorch tensor ('pt' stands for PyTorch).
+truncation=True → Truncates text if it exceeds the model's max length.
+padding=True → Pads shorter texts to ensure uniform input size.
+
+-------------------------------------------------------------------------------------
+ with torch.no_grad():
+        outputs = model(**inputs)
+    return outputs.last_hidden_state.mean(dim=1).squeeze().numpy()
+-------------------------------------------------------------------------------------
+with torch.no_grad():Disables gradient calculations, saving memory and speeding up inference.
+Useful when you don't need to train the model, only extract embeddings.
+
+outputs = model(**inputs):Feeds tokenized inputs into the model.
+Returns a dictionary where outputs.last_hidden_state is the main output.
+outputs.last_hidden_state.mean(dim=1)
+
+last_hidden_state: has shape (batch_size, seq_length, hidden_dim).
+Taking .mean(dim=1) computes the mean embedding across all tokens, creating a single vector per input.
+.squeeze().numpy()
+
+.squeeze(): removes unnecessary dimensions (e.g., if the batch size is 1).
+
+.numpy(): converts the PyTorch tensor to a NumPy array.
+
+-----------------------------------------------------------------------------------
+text = re.sub(r'[^\w\s]', '', text)
+text = re.sub(r'\d+', '', text)
+-----------------------------------------------------------------------------------
+re.sub(r'[^\w\s]', '', text):Matches any character that is NOT a word character (\w) or whitespace (\s).
+Removes punctuation (e.g., !, ?, ,, .).
+
+re.sub(r'\d+', '', text):Matches one or more (+) digits (\d).
+Removes numbers.
+
+sub - substitute
+
+-------------------------------------------------------------------------------------------
+buffer = BytesIO()
+plt.savefig(buffer, format='png', bbox_inches='tight', pad_inches=0, transparent=True)
+plt.close()
+buffer.seek(0)
+--------------------------------------------------------------------------------------------
+buffer = BytesIO():Creates an in-memory buffer using BytesIO. This buffer will temporarily store the image data as a binary stream.
+plt.savefig(buffer, ...):Saves the plot to the buffer instead of a file.
+format='png': specifies the image format (PNG).
+bbox_inches='tight': ensures that the plot is tightly cropped, avoiding extra whitespace around the plot.
+pad_inches=0: eliminates any padding.
+transparent=True: makes the background transparent.
+plt.close():Closes the plot to avoid using up memory when working with multiple plots.
+buffer.seek(0):Moves the read pointer back to the start of the buffer so that you can read the image data from the start.
+     
